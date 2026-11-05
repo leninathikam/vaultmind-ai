@@ -3,6 +3,8 @@
 let state = null;
 let currentPlan = null;
 let lastExecution = null;
+let coreMode = "emerald"; // "emerald", "amber", "crimson"
+let corePulseEnergy = 0;
 
 const el = id => document.getElementById(id);
 
@@ -76,30 +78,240 @@ function copyToClipboard(text, btnElement, successMsg = "Copied ✓") {
   }).catch(() => {});
 }
 
+/* ==========================================================================
+   TREND 1: 3D HOLOGRAPHIC ENCLAVE CORE (CANVAS 3D ENGINE)
+   ========================================================================== */
+
+function init3DVaultCore() {
+  const canvas = el("vault-core-canvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const w = 140;
+  const h = 80;
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  ctx.scale(dpr, dpr);
+
+  // 12 Vertices of an Icosahedron (Golden Ratio)
+  const phi = (1 + Math.sqrt(5)) / 2;
+  const rawVerts = [
+    [-1,  phi, 0], [ 1,  phi, 0], [-1, -phi, 0], [ 1, -phi, 0],
+    [ 0, -1,  phi], [ 0,  1,  phi], [ 0, -1, -phi], [ 0,  1, -phi],
+    [ phi, 0, -1], [ phi, 0,  1], [-phi, 0, -1], [-phi, 0,  1]
+  ];
+
+  // Normalize vertices to sphere radius ~24
+  const radius = 23;
+  const verts = rawVerts.map(v => {
+    const len = Math.hypot(v[0], v[1], v[2]);
+    return [(v[0] / len) * radius, (v[1] / len) * radius, (v[2] / len) * radius];
+  });
+
+  // Unique Icosahedron edges
+  const edges = [];
+  const edgeDist = 2.05 * (radius / Math.hypot(1, phi, 0));
+  for (let i = 0; i < verts.length; i++) {
+    for (let j = i + 1; j < verts.length; j++) {
+      const d = Math.hypot(verts[i][0] - verts[j][0], verts[i][1] - verts[j][1], verts[i][2] - verts[j][2]);
+      if (Math.abs(d - 24.2) < 4) edges.push([i, j]);
+    }
+  }
+
+  // Floating satellite data particles
+  const particles = Array.from({ length: 16 }, () => ({
+    angle: Math.random() * Math.PI * 2,
+    dist: 28 + Math.random() * 12,
+    speed: (0.015 + Math.random() * 0.02) * (Math.random() > 0.5 ? 1 : -1),
+    y: (Math.random() - 0.5) * 20
+  }));
+
+  let rotX = 0.3;
+  let rotY = 0;
+  let targetRotX = 0.3;
+  let targetRotY = 0;
+  let isDragging = false;
+  let lastMouseX = 0;
+  let lastMouseY = 0;
+
+  canvas.addEventListener("mousedown", e => {
+    isDragging = true;
+    lastMouseX = e.clientX;
+    lastMouseY = e.clientY;
+  });
+
+  window.addEventListener("mouseup", () => isDragging = false);
+
+  window.addEventListener("mousemove", e => {
+    if (isDragging) {
+      const dx = e.clientX - lastMouseX;
+      const dy = e.clientY - lastMouseY;
+      targetRotY += dx * 0.02;
+      targetRotX += dy * 0.02;
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+    } else {
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dist = Math.hypot(e.clientX - cx, e.clientY - cy);
+      if (dist < 400) {
+        targetRotY += ((e.clientX - cx) * 0.0003);
+        targetRotX += ((e.clientY - cy) * 0.0003);
+      }
+    }
+  });
+
+  function render() {
+    rotX += (targetRotX - rotX) * 0.1;
+    rotY += (targetRotY - rotY) * 0.1;
+    targetRotY += 0.012; // Continuous gentle rotation
+
+    ctx.clearRect(0, 0, w, h);
+
+    const cx = w / 2;
+    const cy = h / 2;
+    const fov = 160;
+
+    // Determine theme accent colors
+    let mainColor = "rgba(16, 185, 129, ";
+    let glowColor = "#10b981";
+    if (coreMode === "amber") { mainColor = "rgba(245, 158, 11, "; glowColor = "#f59e0b"; }
+    if (coreMode === "crimson") { mainColor = "rgba(244, 63, 94, "; glowColor = "#f43f5e"; }
+
+    // Transform and project 3D vertices
+    const proj = verts.map(v => {
+      // Rotate Y
+      const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      const x1 = v[0] * cosY - v[2] * sinY;
+      const z1 = v[0] * sinY + v[2] * cosY;
+      // Rotate X
+      const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+      const y2 = v[1] * cosX - z1 * sinX;
+      const z2 = v[1] * sinX + z1 * cosX;
+
+      const scale = fov / (fov + z2);
+      return {
+        x: cx + x1 * scale,
+        y: cy + y2 * scale,
+        z: z2,
+        scale: scale
+      };
+    });
+
+    // Draw connecting 3D wireframe edges
+    edges.forEach(([i, j]) => {
+      const p1 = proj[i];
+      const p2 = proj[j];
+      const avgZ = (p1.z + p2.z) / 2;
+      const alpha = Math.max(0.12, Math.min(0.85, (avgZ + 25) / 50));
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.strokeStyle = mainColor + alpha + ")";
+      ctx.lineWidth = alpha > 0.5 ? 1.4 : 0.8;
+      ctx.stroke();
+    });
+
+    // Draw glowing 3D vertices
+    proj.forEach(p => {
+      const alpha = Math.max(0.2, (p.z + 25) / 50);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 2.2 * p.scale, 0, Math.PI * 2);
+      ctx.fillStyle = mainColor + alpha + ")";
+      ctx.shadowColor = glowColor;
+      ctx.shadowBlur = 6 * alpha;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+
+    // Draw orbiting data particles
+    particles.forEach(pt => {
+      pt.angle += pt.speed;
+      const px = Math.cos(pt.angle) * pt.dist;
+      const pz = Math.sin(pt.angle) * pt.dist;
+      // Rotate with scene
+      const cosY = Math.cos(rotY * 0.5), sinY = Math.sin(rotY * 0.5);
+      const x1 = px * cosY - pz * sinY;
+      const z1 = px * sinY + pz * cosY;
+      const scale = fov / (fov + z1);
+      const alpha = Math.max(0.15, (z1 + 35) / 70);
+
+      ctx.beginPath();
+      ctx.arc(cx + x1 * scale, cy + pt.y * scale, 1.4 * scale, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(56, 189, 248, ${alpha})`;
+      ctx.fill();
+    });
+
+    // Pulse wave when actions are executed
+    if (corePulseEnergy > 0) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, (1 - corePulseEnergy) * 36, 0, Math.PI * 2);
+      ctx.strokeStyle = mainColor + corePulseEnergy + ")";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+      corePulseEnergy -= 0.025;
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
+}
+
+/* ==========================================================================
+   TREND 2: CURSOR SPOTLIGHT TRACKER & FLUID INTERACTION
+   ========================================================================== */
+
+function initSpotlightTracker() {
+  document.addEventListener("mousemove", e => {
+    const cards = document.querySelectorAll(".card, .item, .stat, .plan-card, .aside-telemetry");
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    });
+  });
+}
+
+function triggerEnclavePulse(mode = "emerald") {
+  coreMode = mode;
+  corePulseEnergy = 1.0;
+}
+
 function setProofChainStep(step) {
   const steps = ["proposal", "validation", "approval", "execution", "receipt"];
   steps.forEach(s => {
     const elStep = el("step-" + s);
     if (elStep) elStep.classList.remove("active", "completed");
   });
-  if (step === "proposal") el("step-proposal")?.classList.add("active");
+  if (step === "proposal") {
+    el("step-proposal")?.classList.add("active");
+    triggerEnclavePulse("emerald");
+  }
   if (step === "validation") {
     el("step-proposal")?.classList.add("completed");
     el("step-validation")?.classList.add("active");
+    triggerEnclavePulse("emerald");
   }
   if (step === "approval") {
     el("step-proposal")?.classList.add("completed");
     el("step-validation")?.classList.add("completed");
     el("step-approval")?.classList.add("active");
+    triggerEnclavePulse("amber");
   }
   if (step === "execution") {
     el("step-proposal")?.classList.add("completed");
     el("step-validation")?.classList.add("completed");
     el("step-approval")?.classList.add("completed");
     el("step-execution")?.classList.add("active");
+    triggerEnclavePulse("emerald");
   }
   if (step === "receipt") {
     steps.forEach(s => el("step-" + s)?.classList.add("completed"));
+    triggerEnclavePulse("emerald");
   }
 }
 
@@ -429,6 +641,7 @@ async function loadTaxDossier() {
 }
 
 async function loadQuarantine() {
+  triggerEnclavePulse("crimson");
   const data = await api("/api/quarantine");
   const container = el("quarantine-list");
   container.replaceChildren();
@@ -599,6 +812,7 @@ async function inspectOcr() {
 }
 
 async function runAdversarialSuite() {
+  triggerEnclavePulse("crimson");
   const res = await api("/api/adversarial-check", {});
   const container = el("adversarial-results");
   container.replaceChildren();
@@ -652,6 +866,14 @@ function switchView(viewName) {
   document.querySelectorAll("nav button").forEach(n => n.classList.toggle("active", n.dataset.view === viewName));
   el("title").textContent = titles[viewName] || "VaultMind AI";
   error("");
+
+  if (viewName === "quarantine" || viewName === "adversarial") {
+    coreMode = "crimson";
+  } else if (viewName === "actions" || viewName === "tax") {
+    coreMode = "amber";
+  } else {
+    coreMode = "emerald";
+  }
 
   if (viewName === "warranty") loadWarrantyLedger().catch(e => error(e.message));
   if (viewName === "tax") loadTaxDossier().catch(e => error(e.message));
@@ -781,5 +1003,9 @@ el("btn-run-adversarial")?.addEventListener("click", () => {
   runAdversarialSuite().catch(e => error(e.message));
 });
 
-// Initialization
+// Initialize 3D Engine & Micro-Interactions
+init3DVaultCore();
+initSpotlightTracker();
+
+// Initial Data Load
 refresh().then(search).catch(e => error(e.message));

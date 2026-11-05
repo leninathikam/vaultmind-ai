@@ -1,49 +1,53 @@
 /* ==========================================================================
    VaultMind AI · Premium Enclave Experience
-   Design Language: Linear / Apple macOS / UGOS Pro High-End Dark Enclave
+   Design Trends: Immersive 3D Spatial Enclave + Fluid Micro-Interactions & Sci-Fi HUD
+   UGOS Pro & Apple Sonoma Inspired High-End Enclave Architecture
    ========================================================================== */
 
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI Variable Text", "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", "Cascadia Code", Menlo, Consolas, Monaco, monospace;
 
-  /* Deep Space Obsidian Hierarchy */
-  --bg-deep: #05070a;
-  --bg-sidebar: #080c13;
-  --bg-app: #0b1019;
-  --bg-surface: #101724;
-  --bg-surface-elevated: #151f30;
-  --bg-surface-hover: #1a273d;
-  --bg-glass: rgba(13, 19, 31, 0.82);
-  --bg-glass-card: rgba(16, 23, 36, 0.7);
+  /* Deep Space Obsidian Surfaces */
+  --bg-deep: #040609;
+  --bg-sidebar: #070a10;
+  --bg-app: #090e17;
+  --bg-surface: #0e1522;
+  --bg-surface-elevated: #131c2d;
+  --bg-surface-hover: #18243a;
+  --bg-glass: rgba(11, 17, 28, 0.82);
+  --bg-glass-card: rgba(14, 21, 34, 0.72);
 
-  /* Hairline Borders & Specular Lighting */
+  /* Hairline Borders & Precision Specular Highlights */
   --border-hairline: rgba(255, 255, 255, 0.06);
   --border-subtle: rgba(255, 255, 255, 0.1);
   --border-medium: rgba(255, 255, 255, 0.16);
-  --border-glow: rgba(16, 185, 129, 0.45);
-  --highlight-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  --border-glow: rgba(16, 185, 129, 0.5);
+  --highlight-specular: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
 
   /* Vivid Jewel Accents */
   --emerald: #10b981;
   --emerald-light: #34d399;
   --emerald-dark: #059669;
-  --emerald-glow: rgba(16, 185, 129, 0.25);
+  --emerald-glow: rgba(16, 185, 129, 0.35);
   --emerald-dim: rgba(16, 185, 129, 0.12);
   --emerald-border: rgba(16, 185, 129, 0.32);
 
   --sapphire: #0ea5e9;
   --sapphire-light: #38bdf8;
+  --sapphire-glow: rgba(14, 165, 233, 0.35);
   --sapphire-dim: rgba(14, 165, 233, 0.12);
   --sapphire-border: rgba(14, 165, 233, 0.3);
 
   --amber: #f59e0b;
   --amber-light: #fbbf24;
+  --amber-glow: rgba(245, 158, 11, 0.35);
   --amber-dim: rgba(245, 158, 11, 0.12);
   --amber-border: rgba(245, 158, 11, 0.3);
 
   --crimson: #f43f5e;
   --crimson-light: #fb7185;
+  --crimson-glow: rgba(244, 63, 94, 0.35);
   --crimson-dim: rgba(244, 63, 94, 0.14);
   --crimson-border: rgba(244, 63, 94, 0.32);
 
@@ -67,9 +71,9 @@
   --radius-pill: 9999px;
   --sidebar-w: 260px;
 
-  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 1px 1px rgba(255, 255, 255, 0.06);
-  --shadow-hover: 0 16px 40px -12px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.12);
-  --shadow-glow: 0 0 30px -4px rgba(16, 185, 129, 0.35);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.65), 0 0 1px 1px rgba(255, 255, 255, 0.06);
+  --shadow-hover: 0 18px 44px -12px rgba(0, 0, 0, 0.8), 0 0 1px 1px rgba(255, 255, 255, 0.14);
+  --shadow-glow: 0 0 35px -4px rgba(16, 185, 129, 0.4);
 }
 
 *, *::before, *::after {
@@ -93,12 +97,13 @@ body {
   display: flex;
   min-height: 100vh;
   background:
-    radial-gradient(circle 800px at 85% 0%, rgba(14, 165, 233, 0.08), transparent 70%),
-    radial-gradient(circle 700px at 15% 10%, rgba(16, 185, 129, 0.09), transparent 60%),
+    radial-gradient(circle 900px at 85% 0%, rgba(14, 165, 233, 0.08), transparent 70%),
+    radial-gradient(circle 800px at 15% 10%, rgba(16, 185, 129, 0.09), transparent 65%),
     radial-gradient(circle 900px at 90% 85%, rgba(139, 92, 246, 0.06), transparent 70%),
-    linear-gradient(180deg, #05070a 0%, #080c14 100%);
+    linear-gradient(180deg, #040609 0%, #070a12 100%);
   background-attachment: fixed;
   color: var(--text-body);
+  overflow-x: hidden;
 }
 
 /* Custom Sleek Scrollbars */
@@ -118,6 +123,59 @@ body {
 }
 
 /* ==========================================================================
+   DYNAMIC CURSOR SPOTLIGHT EFFECT (TREND 2: FLUID MICRO-INTERACTIONS)
+   ========================================================================== */
+
+.spotlight-card, .card, .item, .stat, .plan-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before, .card::before, .item::before, .stat::before, .plan-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--mouse-x, -200px) var(--mouse-y, -200px),
+    rgba(16, 185, 129, 0.12),
+    transparent 65%
+  );
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before, .card:hover::before, .item:hover::before, .stat:hover::before, .plan-card:hover::before {
+  opacity: 1;
+}
+
+/* Ensure inner content sits above spotlight overlay */
+.card > *, .item > *, .stat > *, .plan-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Cyber-HUD Corner Brackets */
+.hud-corner {
+  position: relative;
+}
+.hud-corner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid var(--emerald-border);
+  border-right: 2px solid var(--emerald-border);
+  border-top-right-radius: var(--radius-sm);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* ==========================================================================
    SIDEBAR & BRANDING
    ========================================================================== */
 
@@ -133,8 +191,8 @@ aside {
   gap: 14px;
   overflow-y: auto;
   z-index: 100;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 .brand-wrapper {
@@ -147,7 +205,7 @@ aside {
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-hairline);
   box-shadow: var(--highlight-specular);
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .brand-wrapper:hover {
@@ -165,7 +223,7 @@ aside {
   justify-content: center;
   background: linear-gradient(135deg, #059669 0%, #10b981 50%, #0ea5e9 100%);
   border-radius: 10px;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
   position: relative;
 }
 
@@ -241,7 +299,7 @@ nav button {
   padding: 8px 12px;
   font-size: 12.5px;
   font-weight: 500;
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   position: relative;
 }
@@ -252,7 +310,7 @@ nav button svg {
   flex-shrink: 0;
   stroke-width: 1.8;
   color: var(--text-muted);
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: color 0.18s ease, transform 0.18s ease;
 }
 
 nav button:hover {
@@ -263,7 +321,7 @@ nav button:hover {
 
 nav button:hover svg {
   color: var(--emerald-light);
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 nav button.active {
@@ -294,11 +352,31 @@ nav button.active::before {
 .aside-telemetry {
   margin-top: auto;
   padding: 14px 16px;
-  background: linear-gradient(180deg, rgba(21, 31, 48, 0.5) 0%, rgba(12, 17, 26, 0.8) 100%);
+  background: linear-gradient(180deg, rgba(19, 28, 44, 0.5) 0%, rgba(10, 15, 24, 0.8) 100%);
   border: 1px solid var(--border-hairline);
   border-radius: var(--radius-md);
   font-size: 11px;
   box-shadow: var(--highlight-specular);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Radar scan sweep line across telemetry */
+.aside-telemetry::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--emerald) 50%, transparent 100%);
+  animation: radar-sweep 4s infinite linear;
+}
+
+@keyframes radar-sweep {
+  0% { left: -100%; top: 0; }
+  50% { left: 100%; top: 100%; }
+  100% { left: -100%; top: 0; }
 }
 
 .telemetry-row {
@@ -351,7 +429,7 @@ nav button.active::before {
 
 main {
   margin-left: var(--sidebar-w);
-  padding: 32px 44px 70px;
+  padding: 30px 42px 70px;
   max-width: 1540px;
   width: calc(100% - var(--sidebar-w));
 }
@@ -359,11 +437,12 @@ main {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 20px;
-  margin-bottom: 26px;
-  padding-bottom: 22px;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
   border-bottom: 1px solid var(--border-hairline);
+  position: relative;
 }
 
 .header-left {
@@ -402,8 +481,54 @@ h1 {
 .header-right {
   display: flex;
   align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* 3D Cryptographic Core Canvas Container */
+.core-3d-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 14px 6px 8px;
+  background: rgba(14, 21, 34, 0.65);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card), var(--highlight-specular);
+  position: relative;
+}
+
+#vault-core-canvas {
+  width: 140px;
+  height: 80px;
+  display: block;
+  cursor: grab;
+}
+
+#vault-core-canvas:active {
+  cursor: grabbing;
+}
+
+.core-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.core-meta-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--emerald-light);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.core-meta-desc {
+  font-size: 9.5px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
 }
 
 .pill {
@@ -524,7 +649,7 @@ h1 {
   background: linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(14, 165, 233, 0.12) 100%);
   border-color: var(--emerald);
   color: #fff;
-  box-shadow: 0 0 20px -2px rgba(16, 185, 129, 0.4), var(--highlight-specular);
+  box-shadow: 0 0 22px -2px rgba(16, 185, 129, 0.45), var(--highlight-specular);
 }
 
 .pc-step.active span {
@@ -798,7 +923,7 @@ button:active {
 .searchbar input {
   padding-left: 18px;
   font-size: 14.5px;
-  background: rgba(16, 23, 36, 0.7);
+  background: rgba(14, 21, 34, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -1196,7 +1321,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: rgba(5, 7, 10, 0.88);
+  background: rgba(4, 6, 9, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -1276,6 +1401,9 @@ footer {
   .stats {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+  .core-3d-wrap {
+    display: none;
   }
 }
 

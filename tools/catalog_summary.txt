@@ -1,0 +1,95 @@
+CLI: ug-music (agent: media-agent) - MusicMusicPlay。
+  - search (type*:string, keyword:string, play:boolean, singer-name:string, album-name:string, songlist-id:integer, start-year:integer, end-year:integer, page:integer, playindex:integer): ug-music  search operation。
+  - control (operation*:string, seek-type:string, position-ms:integer, volume:string, speed:string, playback-mode:string, stop-after-minutes:integer): ug-music  control operation。
+
+CLI: ug-video (agent: media-agent) - Media、PlaySubtitles。
+  - search (type*:string, keyword:string, play:string, classification:string, video-type:string, ug-video-info-id:string, collection-id:string, episode:string, media-lib-id:string, limit:string, offset:string, ug-style-id:string, ug-country-id:string, release-start:string, release-end:string, prefer:string, identify-status:string, watch-status:string, ug-video-info-ids:string, order-type:string, create-time-order:string, sort-type:string, page:string, page-size:string, video-ids:string, with-all:string, all-limit:string, recently-limit:string, favorites-limit:string): ug-video  search operation。
+  - control (operation*:string): ug-video  control operation。
+  - subtitle-search (video-path:string, query:string, season-number:integer, episode-number:integer): ug-video  subtitle-search operation。
+  - subtitle-download (video-path*:string, file-id*:integer): ug-video  subtitle-download operation。
+
+CLI: ug-surveillance (agent: security-monitor-agent) - Querymonitoring、events、identityevidence。
+  - cameras (status:integer, include-deleted:boolean): ug-surveillance  cameras operation。
+  - event-timeline (start-time*:string, end-time*:string, timezone:string, request-id:string, device-id:string, camera-id:string, location:string, floor:string, room:string, topic:string, identity-type:string, person-name:string, limit:integer): ug-surveillance  event-timeline operation。
+  - identity-resolve (event-id:string, face-id:string, plate-id:string, start-time:string, end-time:string, timezone:string, include-explanation:boolean, request-id:string): ug-surveillance  identity-resolve operation。
+  - event-evidence (event-id*:string, evidence-type:string, max-items:string, ttl-sec:string, purpose:string, request-id:string): ug-surveillance  event-evidence operation。
+  - faces (camera-id:string, identity-type:string, page:string, page-size:string, request-id:string): ug-surveillance  faces operation。
+  - face-detail (face-id*:string, request-id:string): ug-surveillance  face-detail operation。
+  - vehicle-plates (camera-id:string, identity-type:string, query:string, page:string, page-size:string, request-id:string): ug-surveillance  vehicle-plates operation。
+  - vehicle-plate-detail (plate-id*:string, request-id:string): ug-surveillance  vehicle-plate-detail operation。
+
+CLI: ug-filesystem (agent: file-agent) - Read NAS filefiledirectory。
+  - cat (path*:string, offset:integer, length:integer): ug-filesystem  cat operation。
+  - category (root-type:integer, limit:integer, permission:string): ug-filesystem  category operation。
+  - find (path*:string, pattern:string, type:string, min-size:string, max-size:string, date-type:string, start-timestamp:string, end-timestamp:string, max-depth:string, limit:string): ug-filesystem  find operation。
+  - getfattr (path*:string, field:string): ug-filesystem  getfattr operation。
+  - ls (path*:string, recursive:boolean, max-depth:string, limit:string): ug-filesystem  ls operation。
+  - md5sum (path*:string): ug-filesystem  md5sum operation。
+  - sha256sum (path*:string): ug-filesystem  sha256sum operation。
+  - stat (path*:string): ug-filesystem  stat operation。
+  - chtimes (path*:string, atime:integer, mtime:integer): ug-filesystem  chtimes operation。
+  - cpmv (src*:string, dst*:string, type:string, action-type:string, overwrite:boolean): ug-filesystem  cpmv operation。
+  - del (path*:string): ug-filesystem  del operation。
+  - echo (path*:string, content:string, write-mode:string, offset:string): ug-filesystem  echo operation。
+  - mkdir (path*:string, mode:string, parents:boolean): ug-filesystem  mkdir operation。
+  - rename (path*:string, old-name*:string, new-name*:string): ug-filesystem  rename operation。
+  - restore (path*:string): ug-filesystem  restore operation。
+  - share-mkdir (volume*:string, folder-name*:string, quota-bytes:string, quota-unit:string, network-places-hide:string, no-permission-hide:string, enable-recycle:string, allow-only-admin-recycle:string): ug-filesystem  share-mkdir operation。
+  - touch (path*:string, mode:string, content:string): ug-filesystem  touch operation。
+
+CLI: ug-filemgr (agent: file-agent) - Queryfiletag。
+  - mediainfo (path*:string, intranet-share-id:string): ug-filemgr  mediainfo operation。
+  - scan-dedupe (path*:string, scope:string): ug-filemgr  scan-dedupe operation。
+  - tag-filter (tag-id*:string, path:string, recursive:boolean): ug-filemgr  tag-filter operation。
+  - tag-get (tag-id*:integer): ug-filemgr  tag-get operation。
+  - tag-get-by-name (name*:string): ug-filemgr  tag-get-by-name operation。
+  - tag-get-file (path*:string): ug-filemgr  tag-get-file operation。
+  - tag-list (): ug-filemgr  tag-list operation。
+  - tag-list-file (tag-id*:integer): ug-filemgr  tag-list-file operation。
+  - tag-add (colour:string, tag-id*:string): ug-filemgr  tag-add operation。
+  - tag-add-file (path*:string, tag-id*:string): ug-filemgr  tag-add-file operation。
+  - tag-delete (tag-id*:string): ug-filemgr  tag-delete operation。
+  - tag-delete-file (path*:string, tag-id*:string): ug-filemgr  tag-delete-file operation。
+  - tag-set (tag-id*:integer, name:string, colour:string): ug-filemgr  tag-set operation。
+
+CLI: file-workflow (agent: file-agent) - fileOrganize、。
+  - get-user-dir (): file-workflow  get-user-dir operation。
+  - start (kind*:string, lang:string, target*:string, destination:string, by:string, filter:string, type-rule:string, scope:string, keep-by:string): file-workflow  start operation。
+  - run (id*:string, start.data.id:string): file-workflow  run operation。
+  - batch-del (paths*:string): file-workflow  batch-del operation。
+  - batch-move (data:string, actionType:string, root:string, renameBy:string, dateField:string, sourceDir:string, destination:string): file-workflow  batch-move operation。
+
+CLI: ug-document (agent: document-agent) - Read、、、TranslateDocuments。
+  - page-count (file:string): ug-document  page-count operation。
+  - metadata (file:string, include-pages:boolean, directory-limit:string): ug-document  metadata operation。
+  - qa (query*:string, file:string, intent:string, content-scope:string, top-k:string, entities:string, answer-mode:string, evidence-mode:string, max-files:string, body-cap:string): ug-document  qa operation。
+  - extract (query*:string, file:string, schema:string, content-scope:string, max-files:string, body-cap:string, dedupe:boolean): ug-document  extract operation。
+  - translate (query:string, file:string, target-lang:string, style:string, body-cap:string, max-files:string, extract-only:boolean, content:string, source-title:string): ug-document  translate operation。
+  - writing (query:string, file:string, task:string, style:string, template:string, content-scope:string, max-length:string, body-cap:string, max-files:string, extract-only:boolean, content:string, source-title:string): ug-document  writing operation。
+  - reconcile (query:string, file:string, max-files:string): ug-document  reconcile operation。
+
+CLI: ug-knowledge (agent: knowledge-agent) - Knowledge、evidence、audioSave。
+  - answer-official (query*:string): ug-knowledge  answer-official operation。
+  - audio-transcription (path:string, language:string, speak-count:integer): ug-knowledge  audio-transcription operation。
+  - collect-evidence (query*:string, path:string, extension:string, full:boolean): ug-knowledge  collect-evidence operation。
+  - save-text (path:string, content:string, content-ref:string, filename-hint:string): ug-knowledge  save-text operation。
+
+CLI: ug-photo (agent: photo-agent) - photosAlbumCreate、OrganizeAlbum。
+  - albums (keyword:string, album-select:string, album-perm:string, album-type:object, share-select:string, page:string, page-size:string, sort-by:string, asc:string, raw:string): ug-photo  albums operation。
+  - album-detail (album-uuid:string, get-type:string, raw:string): ug-photo  album-detail operation。
+  - figure-albums (album-name:string, album-uuid:string, show-hidden:string, show-name:string, page:string, page-size:string, sort-by:string, asc:string, raw:string): ug-photo  figure-albums operation。
+  - object-albums (album-name:string, album-uuid:string, page:string, page-size:string, sort-by:string, asc:string, raw:string): ug-photo  object-albums operation。
+  - search-picture (album-uuid:string, album-name:string, album-type:string, figure-uuid:string, figure-name:string, pet-uuid:string, pet-name:string, figure-pet-method:string, ai-object-index:object, ai-object-uuid:object, ai-object-name:object, location:object, dir:object, file-name-contains:object, ocr-contains:object, start-time:string, end-time:string, total-judge:string, file-type:string, range-personal:string, range-share:string, camera-model:string, lens-model:string, focal:string, exposure:string, aperture:string, iso:string, page:string, page-size:string, sort-by:string, asc:string, raw:string): ug-photo  search-picture operation。
+  - search-screen (category:string, keyword:string, album-type:string, album-uuid:string, figure-uuid:string, pet-uuid:string, storage-type:string, common-album-type:string, index-id:string, class-index:string, range-personal:string, range-share:string, location-level:string, folder-id:string, path:string, file-type:string, camera-model:string, lens-model:string, focal:string, exposure:string, aperture:string, iso:string, page:string, page-size:string, sort-by:string, asc:string, total-judge:string, raw:string): ug-photo  search-screen operation。
+  - search-classify (keyword:string, category:string, page:string, page-size:string, raw:string): ug-photo  search-classify operation。
+  - search-hint (keyword:string, cover-total:string, record:string, page:string, page-size:string, raw:string): ug-photo  search-hint operation。
+  - meta (path:string, raw:string): ug-photo  meta operation。
+  - vision-ocr (path:string): ug-photo  vision-ocr operation。
+  - vision-vlm (path:string, prompt:string, model:string, max-tokens:string, temperature:string, top-p:string): ug-photo  vision-vlm operation。
+  - health (domain:string): ug-photo  health operation。
+  - create-album (album-name:string, add-item:string, sub-type:string, query:string): ug-photo  create-album operation。
+  - create-album-condition (album-name:string, file-type:object, location:object, dir:object, figure-uuid:object, figure-name:object, pet-uuid:object, pet-name:object, camera-model:object, lens-model:object, focal:object, exposure:object, aperture:object, iso:object, file-name-contains:object, ocr-contains:object, start-time:string, end-time:string): ug-photo  create-album-condition operation。
+  - create-album-anniversary (album-name:string, commemorate-method:string, commemorate-month:string, commemorate-day:string, commemorate-range:string, start-time:string, end-time:string): ug-photo  create-album-anniversary operation。
+  - create-album-baby (album-name:string, add-item:string, baby-name:string, person-name:string, gender:string, birthday:string, blood-type:string, height:string, weight:string, figure-uuid:string, query:string): ug-photo  create-album-baby operation。
+  - create-album-custom (album-name:string): ug-photo  create-album-custom operation。
+  - timeline (figure-uuid:string, figure-name:string, pet-uuid:string, pet-name:string, figure-pet-method:string, location:object, dir:object, album-uuid:object, album-name:object, album-type:object, ai-object-index:object, ai-object-uuid:object, ai-object-name:object, file-name-contains:object, ocr-contains:object, start-time:string, end-time:string, camera-model:string, lens-model:string, focal:string, exposure:string, aperture:string, iso:string, file-type:string, group-by:string): ug-photo  timeline operation。

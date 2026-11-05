@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "zip": "releases/vaultmind-ai-0.2.0-pretest.zip",
+  "sha256": "ca6e994e3f33a82c7dd73d02740e2f8a7093666485d7d0a588f7657b58c9a497",
+  "zip_bytes": 17230,
+  "uncompressed_bytes": 37823,
+  "file_count": 6,
+  "entries": [
+    "references/disclosure.md",
+    "references/evidence.md",
+    "references/safe-actions.md",
+    "references/safety.md",
+    "references/validation.md",
+    "SKILL.md"
+  ],
+  "static_status": "static-pass",
+  "nas_validation": "not performed"
+}

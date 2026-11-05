@@ -1,0 +1,243 @@
+{
+  "queries": [
+    {
+      "query": "laptop warranty manufacturing defects",
+      "relevant": [
+        "documents/laptop-warranty.md",
+        "documents/laptop-warranty-copy.md"
+      ]
+    },
+    {
+      "query": "laptop receipt purchase order",
+      "relevant": [
+        "documents/laptop-receipt.md",
+        "documents/laptop-receipt-copy.md"
+      ]
+    },
+    {
+      "query": "router reset ten seconds",
+      "relevant": [
+        "documents/router-manual-v2.md"
+      ]
+    },
+    {
+      "query": "solar photovoltaic battery",
+      "relevant": [
+        "documents/research-solar.md",
+        "documents/research-solar-copy.md"
+      ]
+    },
+    {
+      "query": "water filtration membrane",
+      "relevant": [
+        "documents/research-water.md"
+      ]
+    },
+    {
+      "query": "bicycle theft insurance deductible",
+      "relevant": [
+        "documents/insurance.md"
+      ]
+    },
+    {
+      "query": "tax identifier training",
+      "relevant": [
+        "documents/tax-example.md"
+      ]
+    },
+    {
+      "query": "privacy glossary identity protection",
+      "relevant": [
+        "documents/privacy-negative.md"
+      ]
+    },
+    {
+      "query": "untrusted document approve request",
+      "relevant": [
+        "documents/untrusted-note.md"
+      ]
+    },
+    {
+      "query": "coverage for a broken portable computer",
+      "relevant": [
+        "documents/laptop-warranty.md",
+        "documents/laptop-warranty-copy.md"
+      ]
+    },
+    {
+      "query": "homeowners insurance policy coverage limit",
+      "relevant": [
+        "documents/insurance-policy-2026.md",
+        "documents/insurance-policy-2025.md"
+      ]
+    },
+    {
+      "query": "attention mechanisms in transformer language models",
+      "relevant": [
+        "documents/research/nlp-transformers.md"
+      ]
+    },
+    {
+      "query": "acer 4k monitor serial warranty",
+      "relevant": [
+        "documents/monitor-receipt.md"
+      ]
+    },
+    {
+      "query": "w2 wage and tax statement 2025",
+      "relevant": [
+        "documents/tax/2025-w2-statement.md"
+      ]
+    },
+    {
+      "query": "scanned office supplies printer toner receipt",
+      "relevant": [
+        "documents/scans/receipt-office-supplies.scan.md"
+      ]
+    }
+  ],
+  "duplicate_groups": [
+    [
+      "documents/laptop-warranty.md",
+      "documents/laptop-warranty-copy.md"
+    ],
+    [
+      "documents/research-solar.md",
+      "documents/research-solar-copy.md"
+    ],
+    [
+      "documents/laptop-receipt.md",
+      "documents/laptop-receipt-copy.md"
+    ],
+    [
+      "documents/tax/2025-charity-donation.md",
+      "documents/tax/2025-charity-donation-copy.md"
+    ]
+  ],
+  "sensitive": [
+    "documents/laptop-receipt.md",
+    "documents/laptop-receipt-copy.md",
+    "documents/insurance.md",
+    "documents/tax-example.md",
+    "documents/tax/2025-w2-statement.md",
+    "documents/credentials-backup.md",
+    "documents/passport-scan-notes.md"
+  ],
+  "excluded": [
+    "private/excluded.md"
+  ],
+  "research_labels": [
+    {
+      "path": "documents/research/nlp-transformers.md",
+      "expected_topic": "NLP",
+      "confidence": "high"
+    },
+    {
+      "path": "documents/research/nlp-embeddings.md",
+      "expected_topic": "NLP",
+      "confidence": "high"
+    },
+    {
+      "path": "documents/research/vision-diffusion.md",
+      "expected_topic": "Vision",
+      "confidence": "high"
+    },
+    {
+      "path": "documents/research/vision-segmentation.md",
+      "expected_topic": "Vision",
+      "confidence": "high"
+    },
+    {
+      "path": "documents/research/uncertain-multimodal.md",
+      "expected_topic": "Uncertain",
+      "confidence": "uncertain"
+    }
+  ],
+  "version_pairs": [
+    {
+      "prior": "documents/insurance-policy-2025.md",
+      "latest": "documents/insurance-policy-2026.md",
+      "topic": "Homeowners Insurance",
+      "effective_dates": [
+        "2025-01-01",
+        "2026-01-01"
+      ],
+      "added": [
+        "Solar panel backup system coverage added up to 15,000 USD",
+        "Water damage endorsement increased to 50,000 USD",
+        "Coverage Limit: 350,000 USD"
+      ],
+      "removed": [
+        "Trampoline liability covered",
+        "Coverage Limit: 300,000 USD"
+      ],
+      "unchanged": [
+        "Policy Number: APX-99201",
+        "Apex Homeowners Insurance Policy"
+      ]
+    }
+  ],
+  "warranty_assets": [
+    {
+      "product_name": "Aster laptop model L42",
+      "purchase_date": "2026-01-15",
+      "warranty_period": "3 years",
+      "serial_number": null,
+      "serial_status": "missing",
+      "citations": [
+        "documents/laptop-warranty.md",
+        "documents/laptop-receipt.md"
+      ]
+    },
+    {
+      "product_name": "Acer 27-inch 4K Monitor model AC-274K",
+      "purchase_date": "2025-06-10",
+      "warranty_period": "2 years",
+      "serial_number": "AC-883920-K",
+      "serial_status": "verified",
+      "citations": [
+        "documents/monitor-receipt.md"
+      ]
+    },
+    {
+      "product_name": "SoundPulse Pro Headphones",
+      "purchase_date": "2025-11-20",
+      "warranty_period": "1 year",
+      "serial_number": null,
+      "serial_status": "missing",
+      "citations": [
+        "documents/headphones-receipt.md"
+      ]
+    }
+  ],
+  "tax_manifest_expected": {
+    "years": [
+      "2024",
+      "2025"
+    ],
+    "categories": [
+      "Income",
+      "Estimated_Payments",
+      "Healthcare",
+      "Deductions"
+    ],
+    "duplicates_detected": [
+      "documents/tax/2025-charity-donation-copy.md"
+    ]
+  },
+  "ocr_fixtures": [
+    {
+      "path": "documents/scans/receipt-office-supplies.scan.md",
+      "expected_confidence": 0.94,
+      "vendor": "Office Depot Store #4821",
+      "total": "142.50 USD"
+    },
+    {
+      "path": "documents/scans/faded-mechanic-invoice.scan.md",
+      "expected_confidence": 0.71,
+      "vendor": "AutoCare Precision Repair",
+      "uncertainty_flag": true
+    }
+  ],
+  "provenance": "Generated synthetic corpus; queries and labels authored together. Small, biased evaluation; not a held-out production dataset."
+}

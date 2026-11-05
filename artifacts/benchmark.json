@@ -1,0 +1,325 @@
+{
+  "environment": {
+    "platform": "Windows-11-10.0.26300-SP0",
+    "python": "3.12.11"
+  },
+  "mode": "LOCAL SYNTHETIC BASELINE - NOT NAS OR LLM RESULTS",
+  "corpus": {
+    "indexed": 152,
+    "queries": 15,
+    "provenance": "Generated synthetic corpus; queries and labels authored together. Small, biased evaluation; not a held-out production dataset."
+  },
+  "index": {
+    "seconds": 0.40483140002470464,
+    "files_per_second": 375.46494661907224,
+    "incremental_unchanged_seconds": 0.360510600003181,
+    "incremental_changes": 0,
+    "note": "Content is rehashed; only changed index rows are rewritten. No filesystem watcher."
+  },
+  "search": {
+    "method": "SQLite FTS5 BM25 lexical retrieval, not semantic inference",
+    "recall_at_5": 0.9333333333333333,
+    "mrr_at_5": 0.9333333333333333,
+    "mean_ms": 0.37791000025916016,
+    "p95_ms": 0.6129000103101134,
+    "timed_queries": 450
+  },
+  "classification": {
+    "accuracy": 1.0,
+    "evaluated_items": 5,
+    "uncertainty_calibration": "Uncertain items correctly quarantined into review list",
+    "rationales_provided": true
+  },
+  "contextual_version_diff": {
+    "evaluated_pairs": 1,
+    "results": [
+      {
+        "pair": [
+          "documents/insurance-policy-2025.md",
+          "documents/insurance-policy-2026.md"
+        ],
+        "dates_extracted": true,
+        "added_recall": 1.0,
+        "removed_recall": 1.0
+      }
+    ]
+  },
+  "warranty_asset_ledger": {
+    "total_assets_extracted": 6,
+    "serial_verified_count": 1,
+    "serial_missing_handled_safely": 1,
+    "hallucination_rate": 0.0,
+    "disclaimer_included": true
+  },
+  "tax_dossier_stager": {
+    "total_staged_records": 10,
+    "duplicate_detection_recall": 1.0,
+    "disclaimer_verified": true
+  },
+  "safetagging": {
+    "idempotency_verified": true,
+    "physical_files_modified": 0,
+    "metadata_isolation": true
+  },
+  "native_ocr": {
+    "evaluated_fixtures": 2,
+    "results": [
+      {
+        "path": "documents/scans/receipt-office-supplies.scan.md",
+        "confidence": 0.94,
+        "status": "verified",
+        "uncertainty_flagged": true
+      },
+      {
+        "path": "documents/scans/faded-mechanic-invoice.scan.md",
+        "confidence": 0.71,
+        "status": "uncertain_characters_flagged",
+        "uncertainty_flagged": true
+      }
+    ],
+    "provenance_preserved": true
+  },
+  "adversarial_safety": {
+    "vectors_tested": 10,
+    "vectors_rejected": 10,
+    "rejection_rate": 1.0,
+    "guarantees": "100% fail-closed across all 10 adversarial invariants"
+  },
+  "task_completion": {
+    "lifecycle_completion_rate": 1.0,
+    "tripartite_ledger_verified": true,
+    "cryptographic_receipts_verified": true
+  },
+  "duplicates": {
+    "pair_precision": 1.0,
+    "pair_recall": 1.0,
+    "predicted_pairs": 4
+  },
+  "privacy": {
+    "false_positive_rate": 0.0,
+    "recall": 1.0,
+    "negative_files": 145,
+    "note": "Local pattern detector; synthetic fixtures only."
+  },
+  "memory": {
+    "peak_python_allocated_bytes": 573417,
+    "note": "tracemalloc excludes native SQLite allocations and total process RSS."
+  },
+  "nas_semantic_search": null,
+  "nas_indexing_throughput": null,
+  "human_time_saved": null,
+  "unmeasured_reason": "No NAS session or timed human study; no estimates represented as observations.",
+  "queries": [
+    {
+      "query": "laptop warranty manufacturing defects",
+      "relevant": [
+        "documents/laptop-warranty.md",
+        "documents/laptop-warranty-copy.md"
+      ],
+      "returned": [
+        "documents/laptop-warranty-copy.md",
+        "documents/laptop-warranty.md",
+        "documents/monitor-receipt.md",
+        "documents/laptop-receipt-copy.md",
+        "documents/laptop-receipt.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "laptop receipt purchase order",
+      "relevant": [
+        "documents/laptop-receipt.md",
+        "documents/laptop-receipt-copy.md"
+      ],
+      "returned": [
+        "documents/laptop-receipt-copy.md",
+        "documents/laptop-receipt.md",
+        "documents/laptop-warranty-copy.md",
+        "documents/laptop-warranty.md",
+        "documents/monitor-receipt.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "router reset ten seconds",
+      "relevant": [
+        "documents/router-manual-v2.md"
+      ],
+      "returned": [
+        "documents/router-manual-v2.md",
+        "documents/router-manual-v1.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "solar photovoltaic battery",
+      "relevant": [
+        "documents/research-solar.md",
+        "documents/research-solar-copy.md"
+      ],
+      "returned": [
+        "documents/research-solar-copy.md",
+        "documents/research-solar.md",
+        "documents/insurance-policy-2026.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "water filtration membrane",
+      "relevant": [
+        "documents/research-water.md"
+      ],
+      "returned": [
+        "documents/research-water.md",
+        "documents/insurance-policy-2025.md",
+        "documents/insurance-policy-2026.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "bicycle theft insurance deductible",
+      "relevant": [
+        "documents/insurance.md"
+      ],
+      "returned": [
+        "documents/insurance.md",
+        "documents/insurance-policy-2025.md",
+        "documents/insurance-policy-2026.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "tax identifier training",
+      "relevant": [
+        "documents/tax-example.md"
+      ],
+      "returned": [
+        "documents/tax-example.md",
+        "documents/tax/2025-w2-statement.md",
+        "documents/tax/2025-q1-estimated-payment.md",
+        "documents/tax/2024-1099-misc.md",
+        "documents/tax/2025-charity-donation-copy.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "privacy glossary identity protection",
+      "relevant": [
+        "documents/privacy-negative.md"
+      ],
+      "returned": [
+        "documents/privacy-negative.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "untrusted document approve request",
+      "relevant": [
+        "documents/untrusted-note.md"
+      ],
+      "returned": [
+        "documents/untrusted-note.md",
+        "documents/privacy-negative.md",
+        "documents/scans/faded-mechanic-invoice.scan.md",
+        "documents/scans/receipt-office-supplies.scan.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "coverage for a broken portable computer",
+      "relevant": [
+        "documents/laptop-warranty.md",
+        "documents/laptop-warranty-copy.md"
+      ],
+      "returned": [
+        "documents/research/vision-segmentation.md",
+        "documents/research/vision-diffusion.md",
+        "documents/insurance-policy-2026.md",
+        "documents/insurance.md",
+        "documents/insurance-policy-2025.md"
+      ],
+      "recall_at_5": 0.0,
+      "reciprocal_rank": 0
+    },
+    {
+      "query": "homeowners insurance policy coverage limit",
+      "relevant": [
+        "documents/insurance-policy-2026.md",
+        "documents/insurance-policy-2025.md"
+      ],
+      "returned": [
+        "documents/insurance-policy-2025.md",
+        "documents/insurance-policy-2026.md",
+        "documents/insurance.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "attention mechanisms in transformer language models",
+      "relevant": [
+        "documents/research/nlp-transformers.md"
+      ],
+      "returned": [
+        "documents/research/nlp-transformers.md",
+        "documents/research/vision-diffusion.md",
+        "documents/scans/receipt-office-supplies.scan.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "acer 4k monitor serial warranty",
+      "relevant": [
+        "documents/monitor-receipt.md"
+      ],
+      "returned": [
+        "documents/monitor-receipt.md",
+        "documents/headphones-receipt.md",
+        "documents/laptop-warranty-copy.md",
+        "documents/laptop-warranty.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "w2 wage and tax statement 2025",
+      "relevant": [
+        "documents/tax/2025-w2-statement.md"
+      ],
+      "returned": [
+        "documents/tax/2025-w2-statement.md",
+        "documents/tax/2025-q1-estimated-payment.md",
+        "documents/tax/2025-charity-donation-copy.md",
+        "documents/tax/2025-charity-donation.md",
+        "documents/tax/2025-medical-expenses.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    },
+    {
+      "query": "scanned office supplies printer toner receipt",
+      "relevant": [
+        "documents/scans/receipt-office-supplies.scan.md"
+      ],
+      "returned": [
+        "documents/scans/receipt-office-supplies.scan.md",
+        "documents/scans/faded-mechanic-invoice.scan.md",
+        "documents/laptop-receipt-copy.md",
+        "documents/laptop-receipt.md",
+        "documents/tax/2025-medical-expenses.md"
+      ],
+      "recall_at_5": 1.0,
+      "reciprocal_rank": 1.0
+    }
+  ]
+}

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>VaultMind AI · Local Workbench & ProofChain</title>
+  <link rel="stylesheet" href="/style.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <aside>
+    <a class="brand" href="/">V<span>VaultMind <small>AI</small></span></a>
+    <p class="eyebrow">PROOFCHAIN · SAFE PERSONAL NAS</p>
+    <nav aria-label="Workspace">
+      <button data-view="search" class="active">Search & Evidence</button>
+      <button data-view="files">File Explorer</button>
+      <button data-view="warranty">Warranty Ledger</button>
+      <button data-view="tax">Tax Dossier Stager</button>
+      <button data-view="quarantine">Zero-Trust Quarantine</button>
+      <button data-view="tags">SafeTagging</button>
+      <button data-view="ocr">Native OCR Inspector</button>
+      <button data-view="duplicates">Duplicate Review</button>
+      <button data-view="actions">SafeAction Planner</button>
+      <button data-view="adversarial">Adversarial Sandbox</button>
+      <button data-view="history">Audit Receipts</button>
+    </nav>
+    <div class="aside-note">
+      <b>VaultMind ProofChain</b>
+      <p>Proposal → Validation → Approval → Execution → Receipt.</p>
+      <span class="pill">SIMULATED WORKBENCH</span>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">VAULTMIND AI · PROOFCHAIN WORKBENCH</p>
+        <h1 id="title">Find the file. Understand why.</h1>
+      </div>
+      <span class="pill">Synthetic data only</span>
+    </header>
+
+    <div class="proofchain-bar" id="proofchain-bar">
+      <div class="pc-step" id="step-proposal"><span>1</span> AI Proposal</div>
+      <div class="pc-arrow">→</div>
+      <div class="pc-step" id="step-validation"><span>2</span> Safety Validation</div>
+      <div class="pc-arrow">→</div>
+      <div class="pc-step" id="step-approval"><span>3</span> Human Approval</div>
+      <div class="pc-arrow">→</div>
+      <div class="pc-step" id="step-execution"><span>4</span> UGOS Execution</div>
+      <div class="pc-arrow">→</div>
+      <div class="pc-step" id="step-receipt"><span>5</span> Cryptographic Receipt</div>
+    </div>
+
+    <div class="notice">
+      <b>Local Workbench Mode</b>: Demonstrates deterministic ProofChain protocols, SafeTagging, Warranty Extraction, Tax Staging, OCR provenance, and Zero-Trust Quarantine. No real files are modified; simulated changes occur in virtual memory.
+    </div>
+
+    <div id="error" role="alert" hidden></div>
+    <section id="stats" class="stats" aria-label="Collection summary"></section>
+
+    <!-- 1. Search View -->
+    <section id="search" class="view">
+      <form id="search-form">
+        <label for="query">Ask a document question or search files</label>
+        <div class="searchbar">
+          <input id="query" value="laptop warranty" maxlength="500" placeholder="Try 'laptop warranty', 'acer monitor', or 'tax w2'">
+          <button class="primary">Search collection</button>
+        </div>
+      </form>
+      <div class="suggestions">
+        <button data-query="laptop warranty">Laptop warranty</button>
+        <button data-query="acer 4k monitor serial warranty">Acer monitor</button>
+        <button data-query="w2 wage and tax statement 2025">W-2 tax form</button>
+        <button data-query="scanned office supplies printer toner receipt">Scanned receipt</button>
+        <button data-query="solar photovoltaic battery">Solar research</button>
+      </div>
+      <div class="section-head">
+        <h2>Source Evidence</h2>
+        <span>BM25 lexical ranking</span>
+      </div>
+      <p class="muted">Excerpts come directly from indexed synthetic documents. Semantic synthesis runs through the native UGOS document expert in the submitted Skill.</p>
+      <div id="results"></div>
+    </section>
+
+    <!-- 2. Files View -->
+    <section id="files" class="view" hidden>
+      <h2>Authorized Collection</h2>
+      <p class="muted">Indexed synthetic text fixtures. Excluded folders (e.g. private/) are blocked before indexing.</p>
+      <div id="file-list"></div>
+    </section>
+
+    <!-- 3. Warranty Ledger View -->
+    <section id="warranty" class="view" hidden>
+      <div class="section-head">
+        <h2>Warranty & Asset Ledger</h2>
+        <span class="badge badge-success">Feature 1: Active</span>
+      </div>
+      <p class="muted">Deterministic extraction of product details, purchase dates, warranty expirations, and serial numbers. Missing fields are explicitly flagged without hallucination.</p>
+      <div id="warranty-summary" class="metric-row"></div>
+      <div id="warranty-cards" class="card-grid"></div>
+    </section>
+
+    <!-- 4. Tax Dossier Stager View -->
+    <section id="tax" class="view" hidden>
+      <div class="section-head">
+        <h2>Tax Dossier Stager</h2>
+        <span class="badge badge-success">Feature 6: Active</span>
+      </div>
+      <div class="disclaimer-banner">
+        <b>Statutory Notice:</b> Tax Dossier Stager provides file organization and evidence indexing only. Does not provide legal, accounting, or tax filing advice, and does not certify deduction eligibility.
+      </div>
+      <div class="tax-controls">
+        <button id="btn-stage-tax" class="primary">Generate Tax Dossier Proposal</button>
+      </div>
+      <div id="tax-manifest-container"></div>
+    </section>
+
+    <!-- 5. Zero-Trust Quarantine View -->
+    <section id="quarantine" class="view" hidden>
+      <div class="section-head">
+        <h2>Zero-Trust Quarantine & Privacy</h2>
+        <span class="badge badge-danger">Feature 2: Active</span>
+      </div>
+      <p class="muted">Proactively identifies documents containing credentials, API keys, and PII. Proposes isolation to restricted quarantine directories with secret-redacted logs.</p>
+      <div class="quarantine-controls">
+        <button id="btn-propose-quarantine" class="btn-danger">Propose Zero-Trust Quarantine Plan</button>
+      </div>
+      <div id="quarantine-list"></div>
+    </section>
+
+    <!-- 6. SafeTagging View -->
+    <section id="tags" class="view" hidden>
+      <div class="section-head">
+        <h2>SafeTagging (Native UGOS Metadata)</h2>
+        <span class="badge badge-info">Feature 3: Active</span>
+      </div>
+      <p class="muted">Applies native UGOS file tags without moving files. Fully idempotent and ProofChain-verified.</p>
+      <form id="tag-form">
+        <label for="tag-file">Target file</label>
+        <select id="tag-file"></select>
+        <label for="tag-name">Tag name</label>
+        <input id="tag-name" value="Verified-Receipt" placeholder="e.g. Warranty-Active, Tax-2025">
+        <label for="tag-color">Tag color</label>
+        <select id="tag-color">
+          <option value="#10b981">Green (#10b981)</option>
+          <option value="#3b82f6">Blue (#3b82f6)</option>
+          <option value="#f59e0b">Amber (#f59e0b)</option>
+          <option value="#ef4444">Red (#ef4444)</option>
+          <option value="#8b5cf6">Purple (#8b5cf6)</option>
+        </select>
+        <button type="submit" class="primary">Propose SafeTag Action</button>
+      </form>
+      <div class="section-head"><h3>Active File Tags</h3></div>
+      <div id="tags-active-list"></div>
+    </section>
+
+    <!-- 7. Native OCR Inspector View -->
+    <section id="ocr" class="view" hidden>
+      <div class="section-head">
+        <h2>Native OCR for Scanned Documents</h2>
+        <span class="badge badge-info">Feature 7: Active</span>
+      </div>
+      <p class="muted">Simulates native <code>ug-photo:vision-ocr</code> execution. Preserves character confidence, scan provenance, and explicitly flags unreadable or faded regions.</p>
+      <div class="ocr-selector">
+        <label for="ocr-file-select">Select scanned fixture</label>
+        <select id="ocr-file-select">
+          <option value="documents/scans/receipt-office-supplies.scan.md">receipt-office-supplies.scan.md (Clean Scan · 94% confidence)</option>
+          <option value="documents/scans/faded-mechanic-invoice.scan.md">faded-mechanic-invoice.scan.md (Faded Scan · 71% confidence)</option>
+        </select>
+        <button id="btn-run-ocr" class="primary">Inspect Scan with OCR</button>
+      </div>
+      <div id="ocr-results-container"></div>
+    </section>
+
+    <!-- 8. Duplicate Review View -->
+    <section id="duplicates" class="view" hidden>
+      <h2>Exact Content Duplicates</h2>
+      <p class="muted">Identified via SHA-256 and byte sizes. Organizing duplicates reclaims zero physical storage.</p>
+      <div id="duplicate-list"></div>
+    </section>
+
+    <!-- 9. SafeAction Planner View -->
+    <section id="actions" class="view" hidden>
+      <h2>SafeAction Planner & ProofChain</h2>
+      <p class="muted">Interactive proposal preview, human approval token binding, serial execution, and cryptographic receipts.</p>
+      <form id="plan-form">
+        <label for="source">Source fixture</label>
+        <select id="source"></select>
+        <label for="destination">Destination in virtual archive</label>
+        <input id="destination" value="archive/laptop-warranty.md">
+        <button class="primary">Generate ProofChain Plan</button>
+      </form>
+      <div id="plan"></div>
+    </section>
+
+    <!-- 10. Adversarial Sandbox View -->
+    <section id="adversarial" class="view" hidden>
+      <div class="section-head">
+        <h2>Adversarial Safety Sandbox</h2>
+        <span class="badge badge-danger">Feature 5: Active</span>
+      </div>
+      <p class="muted">Live test harness evaluating 10 adversarial attack vectors against VaultMind deterministic safety invariants.</p>
+      <button id="btn-run-adversarial" class="btn-danger">Run Adversarial Invariant Suite</button>
+      <div id="adversarial-results"></div>
+    </section>
+
+    <!-- 11. History & Audit Receipts View -->
+    <section id="history" class="view" hidden>
+      <h2>ProofChain Execution Receipts & Audit Ledger</h2>
+      <p class="muted">Session activity log with cryptographic receipts and tripartite execution outcomes.</p>
+      <div id="history-list"></div>
+    </section>
+
+    <footer>
+      VaultMind AI · UGREEN AI NAS Hackathon 2026 · Native Uliya Skill & Independent Reference Workbench.
+    </footer>
+  </main>
+
+  <dialog id="preview">
+    <form method="dialog"><button class="close">Close preview</button></form>
+    <h2 id="preview-title"></h2>
+    <pre id="preview-text"></pre>
+  </dialog>
+</body>
+</html>

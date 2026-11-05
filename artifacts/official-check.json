@@ -1,0 +1,42 @@
+{
+  "checkFormatVersion": "2.0.0",
+  "status": "static-pass",
+  "target": {
+    "skillName": "vaultmind-ai"
+  },
+  "catalog": {
+    "checkedVersion": "2.0.0"
+  },
+  "files": [
+    {
+      "path": "references/disclosure.md",
+      "sha256": "1976a9110105542060e854f05c6fb32fd4f4f3857fe794e5d26e75761ae3cc9e"
+    },
+    {
+      "path": "references/evidence.md",
+      "sha256": "6c186e82de6477a676472b8f0dd2b33fb8972aacffe179a80ac5b8934e4f0cde"
+    },
+    {
+      "path": "references/safe-actions.md",
+      "sha256": "b4660bba02ace4ebbc917853fd7a785c113199b44dd3272d457733c4d36d3672"
+    },
+    {
+      "path": "references/safety.md",
+      "sha256": "928c9795b3c5bf3cc16830e7955a14183b73464a233e735d88555519f7cca52f"
+    },
+    {
+      "path": "references/validation.md",
+      "sha256": "c559cde9824dba1951e45f7035248388259bd7d33179ccc7d368519e9634fbb8"
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "73ffc685fd469bda684bf747ece575f2d93499ad7b30e2359668ade216408e35"
+    }
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 0,
+    "info": 0
+  },
+  "diagnostics": []
+}

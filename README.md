@@ -6,6 +6,34 @@ Evidence-backed NAS file answers, explainable smart organization, warranty asset
 
 ## Architectural Protocol: VaultMind ProofChain
 
+```mermaid
+flowchart TD
+  subgraph UserScope ["User Scope and Privacy Boundary"]
+    Goal["User Requests and Queries"] --> Scope["Scope Enforcement and Exclusion Precedence"]
+  end
+
+  subgraph ProofChain ["VaultMind ProofChain Protocol"]
+    Scope --> Stage1["1. AI Proposal: Move, Tag, Quarantine, Tax Staging"]
+    Stage1 --> Stage2["2. Deterministic Safety Validation: 10 Invariants and SHA-256"]
+    Stage2 --> Stage3["3. Explicit Human Approval: APPROVE version indices"]
+    Stage3 --> Stage4["4. Native UGOS Execution: Serial, Pre-rehashed, Fail-Closed"]
+    Stage4 --> Stage5["5. Tripartite Execution Ledger: Authorized, Changed, Unchanged"]
+  end
+
+  subgraph PlatformAgents ["UGOS Native Platform Agents"]
+    Stage4 -.-> FA["file-agent: ug-filesystem, ug-filemgr, file-workflow"]
+    Stage4 -.-> DA["document-agent: ug-document qa, extract, reconcile"]
+    Stage4 -.-> PA["photo-agent: ug-photo vision-ocr, meta"]
+    Stage4 -.-> KA["knowledge-agent: ug-knowledge save-text"]
+  end
+
+  subgraph Recovery ["Cryptographic Recovery and Audit"]
+    Stage5 --> Receipt["Tamper-Evident SHA-256 Proof Receipt"]
+    Receipt --> Inverse["Guarded Inverse Rollback Proposal"]
+    Inverse -.-> Stage3
+  end
+```
+
 All mutating or tagging operations follow a unified five-stage lifecycle:
 1. **AI Proposal**: Explainable folder organization, zero-trust quarantine, tax dossier staging, or SafeTagging proposals generated with explicit rationales and confidence ratings.
 2. **Deterministic Safety Validation**: Preflight verification ensuring canonical path containment, exclusion precedence, absence of symlinks/junctions, no destination collisions, non-circularity, and matching source SHA-256 digests.

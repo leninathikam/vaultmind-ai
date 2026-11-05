@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>VaultMind AI · Enclave Workbench & ProofChain</title>
+  <title>VaultMind AI · Enterprise NAS Enclave & ProofChain</title>
   <link rel="stylesheet" href="/style.css">
   <script defer src="/app.js"></script>
 </head>
@@ -11,7 +11,7 @@
   <aside>
     <a class="brand-wrapper" href="/">
       <div class="brand-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           <path d="M12 8v4"/>
           <path d="M12 16h.01"/>
@@ -19,7 +19,7 @@
       </div>
       <div class="brand-text">
         <div class="brand-title">VaultMind <span class="brand-badge">AI</span></div>
-        <div class="brand-subtitle">ProofChain Enclave</div>
+        <div class="brand-subtitle">UGOS Enclave Core</div>
       </div>
     </a>
 
@@ -59,7 +59,7 @@
       </button>
     </nav>
 
-    <div class="nav-section-title">Security & Audit</div>
+    <div class="nav-section-title">Security & Governance</div>
     <nav aria-label="Security & Governance">
       <button data-view="quarantine">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
@@ -81,20 +81,20 @@
 
     <div class="aside-telemetry">
       <div class="telemetry-row">
-        <span class="telemetry-label">Hardware Target</span>
+        <span class="telemetry-label">Appliance Target</span>
         <span class="telemetry-value">UGREEN DXP4800+</span>
       </div>
       <div class="telemetry-row">
-        <span class="telemetry-label">Operating System</span>
+        <span class="telemetry-label">OS Environment</span>
         <span class="telemetry-value">UGOS Pro 2.0</span>
       </div>
       <div class="telemetry-row">
-        <span class="telemetry-label">Enclave Engine</span>
-        <span class="telemetry-value">Native Uliya</span>
+        <span class="telemetry-label">Enclave Storage</span>
+        <span class="telemetry-value">ZFS / AES-XTS</span>
       </div>
       <div class="telemetry-row" style="margin-bottom:0; margin-top:8px;">
-        <span class="telemetry-label">Enclave State</span>
-        <span class="telemetry-status">FAIL-CLOSED ARMED</span>
+        <span class="telemetry-label">Zero-Trust Guard</span>
+        <span class="telemetry-status">ARMED & ACTIVE</span>
       </div>
     </div>
   </aside>
@@ -103,14 +103,14 @@
     <header>
       <div class="header-left">
         <p class="eyebrow">
-          <span>VAULTMIND PROOFCHAIN</span>
+          <span>VAULTMIND PROTOCOL</span>
           <span class="eyebrow-divider"></span>
-          <span>ENTERPRISE ENCLAVE</span>
+          <span>ENTERPRISE CRYPTOGRAPHIC ENCLAVE</span>
         </p>
         <h1 id="title">Find the file. Understand why.</h1>
       </div>
       <div class="header-right">
-        <span class="pill pill-emerald">● ProofChain Active</span>
+        <span class="pill pill-emerald">● Enclave Synchronized</span>
         <span class="pill">Synthetic data only</span>
       </div>
     </header>
@@ -121,7 +121,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           VaultMind ProofChain Lifecycle Protocol
         </div>
-        <div class="proofchain-caption">Deterministic State Invariants · Fail-Closed Execution</div>
+        <div class="proofchain-caption">10 Invariants Enforced · Single-Use Token Grants</div>
       </div>
       <div class="proofchain-bar" id="proofchain-bar">
         <div class="pc-step" id="step-proposal"><span>1</span> AI Proposal</div>
@@ -137,7 +137,7 @@
     </div>
 
     <div class="notice">
-      <b>Local Enclave Environment</b>: Demonstrates deterministic ProofChain protocols, SafeTagging, Warranty Extraction, Tax Staging, OCR provenance, and Zero-Trust Quarantine. Real NAS collections remain untouched; all simulated state occurs in isolated memory.
+      <b>Isolated Enclave Session</b>: Demonstrating deterministic ProofChain verification, SafeTagging, Warranty Extraction, Tax Staging, OCR Provenance, and Zero-Trust Quarantine. Real NAS collections remain untouched; state mutations occur strictly in isolated virtual memory.
     </div>
 
     <div id="error" role="alert" hidden></div>
@@ -146,12 +146,15 @@
     <!-- 1. Search View -->
     <section id="search" class="view">
       <form id="search-form">
-        <label for="query">Ask a document question or search files</label>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <label for="query" style="margin:0;">Ask a document question or search files</label>
+          <span style="font-size:11px; color:var(--text-muted);">Press <kbd style="background:rgba(255,255,255,0.08); padding:1px 5px; border-radius:4px; font-family:var(--font-mono); font-size:10px;">/</kbd> to focus</span>
+        </div>
         <div class="searchbar">
           <input id="query" value="laptop warranty" maxlength="500" placeholder="Try 'laptop warranty', 'acer monitor', or 'tax w2'">
           <button class="primary" type="submit">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            Search collection
+            Search Collection
           </button>
         </div>
       </form>
@@ -174,9 +177,9 @@
     <section id="files" class="view" hidden>
       <div class="section-head">
         <h2>Authorized Document Collection</h2>
-        <span class="badge badge-success">Scope Enforced</span>
+        <span class="badge badge-success">Canonical Scope Enforced</span>
       </div>
-      <p class="muted">Indexed synthetic text fixtures. Excluded folders (e.g. private/) are blocked before indexing by deterministic scope preflight.</p>
+      <p class="muted">Indexed synthetic text fixtures. Excluded directories (e.g. private/) are blocked before indexing by deterministic scope preflight.</p>
       <div id="file-list"></div>
     </section>
 
@@ -200,7 +203,7 @@
       <div class="disclaimer-banner">
         <b>Statutory Notice:</b> Tax Dossier Stager provides file organization and evidence indexing only. Does not provide legal, accounting, or tax filing advice, and does not certify deduction eligibility.
       </div>
-      <div class="tax-controls" style="margin-bottom: 18px;">
+      <div class="tax-controls" style="margin-bottom: 20px;">
         <button id="btn-stage-tax" class="primary">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           Generate Tax Dossier Proposal
@@ -216,7 +219,7 @@
         <span class="badge badge-danger">Feature 2: Active</span>
       </div>
       <p class="muted">Proactively identifies documents containing credentials, API keys, and PII. Proposes isolation to restricted quarantine directories with secret-redacted logs.</p>
-      <div class="quarantine-controls" style="margin: 16px 0;">
+      <div class="quarantine-controls" style="margin: 18px 0;">
         <button id="btn-propose-quarantine" class="btn-danger">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Propose Zero-Trust Quarantine Plan
@@ -232,8 +235,8 @@
         <span class="badge badge-info">Feature 3: Active</span>
       </div>
       <p class="muted">Applies native UGOS file tags without moving files. Fully idempotent and ProofChain-verified.</p>
-      <form id="tag-form" class="plan-card" style="margin-top:12px;">
-        <div style="display:grid; grid-template-columns: 2fr 1.5fr 1fr; gap:12px; align-items:flex-end;">
+      <form id="tag-form" class="plan-card" style="margin-top:14px;">
+        <div style="display:grid; grid-template-columns: 2fr 1.5fr 1fr; gap:14px; align-items:flex-end;">
           <div>
             <label for="tag-file">Target file</label>
             <select id="tag-file"></select>
@@ -253,7 +256,7 @@
             </select>
           </div>
         </div>
-        <div style="margin-top:16px;">
+        <div style="margin-top:18px;">
           <button type="submit" class="primary">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/></svg>
             Propose SafeTag Action
@@ -271,15 +274,15 @@
         <span class="badge badge-info">Feature 7: Active</span>
       </div>
       <p class="muted">Simulates native <code>ug-photo:vision-ocr</code> execution. Preserves character confidence, scan provenance, and explicitly flags unreadable or faded regions.</p>
-      <div class="ocr-selector" style="margin-top:16px;">
-        <div style="flex-grow:1; max-width:550px;">
+      <div class="ocr-selector" style="margin-top:18px;">
+        <div style="flex-grow:1; max-width:560px;">
           <label for="ocr-file-select">Select scanned fixture</label>
           <select id="ocr-file-select">
             <option value="documents/scans/receipt-office-supplies.scan.md">receipt-office-supplies.scan.md (Clean Scan · 94% confidence)</option>
             <option value="documents/scans/faded-mechanic-invoice.scan.md">faded-mechanic-invoice.scan.md (Faded Scan · 71% confidence)</option>
           </select>
         </div>
-        <button id="btn-run-ocr" class="primary" style="height:42px;">
+        <button id="btn-run-ocr" class="primary" style="height:44px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 12h20"/><circle cx="12" cy="12" r="3"/></svg>
           Inspect Scan with OCR
         </button>
@@ -291,7 +294,7 @@
     <section id="duplicates" class="view" hidden>
       <div class="section-head">
         <h2>Exact Content Duplicates</h2>
-        <span class="badge badge-warning">Zero Reclaim Warning</span>
+        <span class="badge badge-warning">Zero Reclaim Notice</span>
       </div>
       <p class="muted">Identified via SHA-256 and byte sizes. Organizing duplicate references reclaims zero physical storage without block deduplication.</p>
       <div id="duplicate-list"></div>
@@ -304,12 +307,12 @@
         <span class="badge badge-success">Feature 4 & 5: Active</span>
       </div>
       <p class="muted">Interactive proposal preview, human approval token binding, serial execution, and cryptographic receipts.</p>
-      <form id="plan-form" class="plan-card" style="margin-top:12px;">
+      <form id="plan-form" class="plan-card" style="margin-top:14px;">
         <label for="source">Source fixture</label>
         <select id="source"></select>
         <label for="destination">Destination in virtual archive</label>
         <input id="destination" value="archive/laptop-warranty.md">
-        <div style="margin-top:16px;">
+        <div style="margin-top:18px;">
           <button class="primary" type="submit">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
             Generate ProofChain Plan
@@ -326,7 +329,7 @@
         <span class="badge badge-danger">Feature 5: Active</span>
       </div>
       <p class="muted">Live test harness evaluating 10 adversarial attack vectors against VaultMind deterministic safety invariants.</p>
-      <div style="margin: 16px 0;">
+      <div style="margin: 18px 0;">
         <button id="btn-run-adversarial" class="btn-danger">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           Run Adversarial Invariant Suite
@@ -352,7 +355,7 @@
   </main>
 
   <dialog id="preview">
-    <form method="dialog"><button class="close">✕ Close preview</button></form>
+    <form method="dialog"><button class="close">✕ Close Preview</button></form>
     <h2 id="preview-title"></h2>
     <pre id="preview-text"></pre>
   </dialog>

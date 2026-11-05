@@ -11,7 +11,7 @@ const titles = {
   files: "Authorized document collection.",
   warranty: "Warranty & Asset Ledger (Feature 1)",
   tax: "Tax Dossier Stager (Feature 6)",
-  quarantine: "Zero-Trust Quarantine & Privacy (Feature 2)",
+  quarantine: "Zero-Trust Quarantine & Privacy Defense (Feature 2)",
   tags: "SafeTagging Metadata Studio (Feature 3)",
   ocr: "Native OCR Inspector (Feature 7)",
   duplicates: "Duplicate review & content equality.",
@@ -62,15 +62,17 @@ function item(title, text) {
   return d;
 }
 
-function copyToClipboard(text, btnElement, successMsg = "Copied!") {
+function copyToClipboard(text, btnElement, successMsg = "Copied ✓") {
   navigator.clipboard.writeText(text).then(() => {
     const originalText = btnElement.textContent;
     btnElement.textContent = successMsg;
     btnElement.style.color = "var(--emerald-light)";
+    btnElement.style.borderColor = "var(--emerald-border)";
     setTimeout(() => {
       btnElement.textContent = originalText;
       btnElement.style.color = "";
-    }, 1500);
+      btnElement.style.borderColor = "";
+    }, 1800);
   }).catch(() => {});
 }
 
@@ -116,7 +118,7 @@ async function search() {
   container.replaceChildren();
   if (!data.results.length) {
     const emptyNotice = node("div", undefined, "notice");
-    emptyNotice.style.background = "rgba(255,255,255,0.03)";
+    emptyNotice.style.background = "rgba(255,255,255,0.02)";
     emptyNotice.style.borderColor = "var(--border-hairline)";
     emptyNotice.style.color = "var(--text-muted)";
     emptyNotice.textContent = "No matching evidence found. Try an exact keyword from the collection (e.g. 'warranty', 'monitor', 'w2'). This deterministic BM25 baseline evaluates direct lexical containment.";
@@ -129,7 +131,7 @@ async function search() {
     headerRow.style.display = "flex";
     headerRow.style.justifyContent = "space-between";
     headerRow.style.alignItems = "center";
-    headerRow.style.marginBottom = "6px";
+    headerRow.style.marginBottom = "8px";
 
     const titleWrap = node("h3", r.path.split("/").pop());
     titleWrap.style.margin = "0";
@@ -138,8 +140,8 @@ async function search() {
     headerRow.append(titleWrap, scoreBadge);
 
     const excerpt = node("p", r.excerpt);
-    excerpt.style.background = "rgba(0,0,0,0.25)";
-    excerpt.style.padding = "10px 14px";
+    excerpt.style.background = "rgba(0,0,0,0.3)";
+    excerpt.style.padding = "12px 16px";
     excerpt.style.borderRadius = "var(--radius-sm)";
     excerpt.style.border = "1px solid var(--border-hairline)";
 
@@ -147,14 +149,14 @@ async function search() {
     pathRow.style.display = "flex";
     pathRow.style.justifyContent = "space-between";
     pathRow.style.alignItems = "center";
-    pathRow.style.marginTop = "10px";
+    pathRow.style.marginTop = "12px";
 
     const pathSpan = node("span", r.path, "path");
     pathSpan.style.margin = "0";
 
     const previewBtn = action("Inspect Source Evidence", () => preview(r.path), "primary");
-    previewBtn.style.padding = "5px 12px";
-    previewBtn.style.fontSize = "11.5px";
+    previewBtn.style.padding = "6px 14px";
+    previewBtn.style.fontSize = "12px";
 
     pathRow.append(pathSpan, previewBtn);
     card.append(headerRow, excerpt, pathRow);
@@ -171,7 +173,7 @@ function displayPlan(plan) {
   headerRow.style.display = "flex";
   headerRow.style.justifyContent = "space-between";
   headerRow.style.alignItems = "center";
-  headerRow.style.marginBottom = "14px";
+  headerRow.style.marginBottom = "16px";
 
   const tag = node("span", `PROOFCHAIN PROPOSAL · PLAN v${plan.version} (${plan.plan_type.toUpperCase()})`, "tag");
   tag.style.background = "var(--emerald-dim)";
@@ -183,7 +185,7 @@ function displayPlan(plan) {
   headerRow.append(tag, hashChip);
 
   const title = node("h2", `Plan v${plan.version}: ${plan.actions.length} action(s) proposed`);
-  title.style.margin = "0 0 14px 0";
+  title.style.margin = "0 0 16px 0";
   box.append(headerRow, title);
 
   const table = node("table", undefined, "plan-table");
@@ -249,7 +251,7 @@ function displayPlan(plan) {
         displayPlan(inv);
         await refresh();
       }, "btn-secondary");
-      inverseBtn.style.marginTop = "14px";
+      inverseBtn.style.marginTop = "16px";
       receiptBox.append(inverseBtn);
     }
 
@@ -304,8 +306,8 @@ async function loadWarrantyLedger() {
     const specGrid = node("div");
     specGrid.style.display = "grid";
     specGrid.style.gridTemplateColumns = "1fr 1fr";
-    specGrid.style.gap = "8px 12px";
-    specGrid.style.margin = "10px 0";
+    specGrid.style.gap = "10px 14px";
+    specGrid.style.margin = "12px 0";
 
     const addSpec = (k, v, isMono = false) => {
       const box = node("div");
@@ -315,7 +317,7 @@ async function loadWarrantyLedger() {
       label.style.color = "var(--text-muted)";
       label.style.fontWeight = "600";
       const val = node("div", v || "—");
-      val.style.fontSize = "12px";
+      val.style.fontSize = "12.5px";
       val.style.color = "var(--text-main)";
       if (isMono) {
         val.style.fontFamily = "var(--font-mono)";
@@ -334,13 +336,13 @@ async function loadWarrantyLedger() {
 
     const serialRow = node("div");
     serialRow.style.background = "rgba(0,0,0,0.3)";
-    serialRow.style.padding = "8px 12px";
+    serialRow.style.padding = "10px 14px";
     serialRow.style.borderRadius = "var(--radius-sm)";
     serialRow.style.border = "1px solid var(--border-hairline)";
     serialRow.style.display = "flex";
     serialRow.style.justifyContent = "space-between";
     serialRow.style.alignItems = "center";
-    serialRow.style.margin = "10px 0";
+    serialRow.style.margin = "12px 0";
 
     const serialTitle = node("span", "Serial Number:");
     serialTitle.style.fontSize = "11.5px";
@@ -449,7 +451,7 @@ async function loadQuarantine() {
     header.style.display = "flex";
     header.style.justifyContent = "space-between";
     header.style.alignItems = "center";
-    header.style.marginBottom = "8px";
+    header.style.marginBottom = "10px";
 
     const title = node("h3", f.path);
     title.style.margin = "0";
@@ -459,7 +461,7 @@ async function loadQuarantine() {
 
     const previewBox = node("pre");
     previewBox.style.background = "rgba(0,0,0,0.3)";
-    previewBox.style.padding = "10px 14px";
+    previewBox.style.padding = "12px 16px";
     previewBox.style.borderRadius = "var(--radius-sm)";
     previewBox.style.border = "1px solid var(--border-hairline)";
     previewBox.style.fontFamily = "var(--font-mono)";
@@ -471,11 +473,11 @@ async function loadQuarantine() {
     const footerRow = node("div");
     footerRow.style.display = "flex";
     footerRow.style.justifyContent = "flex-end";
-    footerRow.style.marginTop = "10px";
+    footerRow.style.marginTop = "12px";
 
     const btn = action("Inspect Masked Fixture", () => preview(f.path), "btn-secondary");
     btn.style.fontSize = "11.5px";
-    btn.style.padding = "5px 12px";
+    btn.style.padding = "5px 14px";
 
     footerRow.append(btn);
     item.append(header, previewBox, footerRow);
@@ -566,7 +568,7 @@ async function inspectOcr() {
     const grid = node("div");
     grid.style.display = "grid";
     grid.style.gridTemplateColumns = "repeat(auto-fit, minmax(200px, 1fr))";
-    grid.style.gap = "8px 14px";
+    grid.style.gap = "10px 16px";
 
     for (const [k, v] of Object.entries(data.extracted_fields)) {
       const itemBox = node("div");
@@ -575,7 +577,7 @@ async function inspectOcr() {
       kLabel.style.color = "var(--text-muted)";
       kLabel.style.textTransform = "uppercase";
       const vText = node("div", String(v));
-      vText.style.fontSize = "12px";
+      vText.style.fontSize = "12.5px";
       vText.style.fontWeight = "600";
       vText.style.color = "var(--text-main)";
       itemBox.append(kLabel, vText);
